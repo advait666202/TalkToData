@@ -1,0 +1,18 @@
+# Secrets — never commit your real token
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Local scratch / generated
+_doc_extracted.txt
+_test_*.py
+*.db
+
+# Gradio
+.gradio/
+flagged/

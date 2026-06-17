@@ -1,0 +1,4 @@
+gradio>=5.0
+huggingface_hub>=0.27
+pandas>=2.0
+python-dotenv>=1.0
