@@ -199,8 +199,15 @@ with gr.Blocks(title="TalkToData — Ask Your Database") as demo:
                 )
                 api_key = gr.Textbox(
                     label="Hugging Face API key",
-                    placeholder="hf_...",
-                    value=DEFAULT_TOKEN,
+                    placeholder=(
+                        "Optional — using the built-in key"
+                        if DEFAULT_TOKEN else "hf_..."
+                    ),
+                    # Never pre-fill the real token: a password box only masks
+                    # it on screen, the value itself is shipped to every
+                    # visitor's browser. Left blank, the engine falls back to
+                    # the HF_TOKEN env var server-side.
+                    value="",
                     type="password",
                     info="Used for Phase B & C. Get one at huggingface.co/settings/tokens",
                 )

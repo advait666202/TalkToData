@@ -118,6 +118,12 @@ def _build_database() -> None:
 
 _build_database()
 
+# Lock the database once it is seeded. On a shared deployment every visitor
+# queries this one connection, so a Phase B "DROP TABLE" must not be able to
+# break the app for everyone else. SQLite refuses the write and the UI shows
+# the error — the dangerous SQL is still visible, it just can't run.
+_cur.execute("PRAGMA query_only = ON")
+
 
 # ---------------------------------------------------------------------------
 # Schema — the "grammar" of the target language (handed to the LLM)
